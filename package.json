@@ -12,6 +12,7 @@
     "pug": "^2.0.0-rc.2"
   },
   "devDependencies": {
+    "body-parser": "^1.17.2",
     "chai": "^4.0.2",
     "codecov": "^2.2.0",
     "istanbul": "^0.4.5",
