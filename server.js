@@ -4,6 +4,8 @@ var app = express();
 var MongoClient = require('mongodb').MongoClient;
 var Server = require('mongodb').Server;
 
+var Task = require('./class/task');
+
 app.engine('html', cons.pug);
 app.set('view engine', 'html');
 app.set('views', __dirname + '/views')

@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - "7"
+install:
+  - "npm install mocha"
+  - "npm install chai"
+  - "npm install -g codecov"
+  - "npm install istanbul"
+script:
+  - "istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec --recursive"
+  - "codecov"
