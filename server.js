@@ -1,6 +1,7 @@
 var express = require('express');
 var cons = require('consolidate');
 var app = express();
+var bodyParser = require('body-parser');
 var MongoClient = require('mongodb').MongoClient;
 var Server = require('mongodb').Server;
 
@@ -28,7 +29,7 @@ app.get('/tasks', function (req, res) {
     // });
 
 
-render(res);
+    render(res);
 
     // var test = app.db.collection('task').find(query);
     // console.log(test);
@@ -53,14 +54,22 @@ function render(res) {
     });
 }
 
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+
 app.post('/tasks/add', function (req, res) {
 
     //ajoute la tache
-res.redirect('/tasks');
     // res.render("index", {
     //     "name": "tache ajouté"
     // });
+    //db.task.insert({'name': 'test', 'date':'2017-06-06', 'label':'testlabel'})
+
+    app.db.collection('task').insert(req.body);
+    console.log(req.body);
+
     console.log("redirection add ok");
+    res.redirect('/tasks');
 });
 
 app.get('*', function (req, res) {
