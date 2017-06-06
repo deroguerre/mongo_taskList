@@ -6,5 +6,22 @@ html(lang="fr")
     h1 Hello #{name}
 
     ul
-        each val in #{task_array}
-            li= val
+      each val in task_array
+        li 
+          span name : #{val.name}
+          span date : #{val.date}
+          span label : #{val.label}
+    
+    form(method='POST' action='tasks/add')
+      label(for='name') Name :
+      input#name.form-control(type='text', placeholder='name' name='name')
+      
+      label(for='date') date :
+      input#date.form-control(type='text', placeholder='aaaa-mm-jj' name='date')
+
+      label(for='label') label :
+      input#label.form-control(type='text', placeholder='label' name='label')
+
+      
+
+      button(type='submit') Ajouter

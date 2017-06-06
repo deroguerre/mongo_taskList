@@ -7,6 +7,7 @@
         }
 }
 
+mongod --dbpath data/db --logpath data/log/log --smallfiles
 mongo
 use tp_tasks
 
